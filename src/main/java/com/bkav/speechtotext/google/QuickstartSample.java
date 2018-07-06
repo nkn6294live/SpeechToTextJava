@@ -61,10 +61,10 @@ public class QuickstartSample {
 		.forEach(entry -> {
 			System.out.println(String.format("[%s]:[%s]", entry.getKey(), entry.getValue()));
 		});
-//		syncRecognizeFile2();
+		syncRecognizeFile2();
 //		streamingRecognizeFile("/home/namnk/workspace/nodejs/2/resources/test.wav");
 //		streamingRecognizeFile("/home/namnk/Desktop/record.wav");
-		streamRecognizeMic();
+//		streamRecognizeMic();
 	}
 
 	public static void streamRecognizeMic() throws Exception {
@@ -152,7 +152,9 @@ public class QuickstartSample {
 		try (SpeechClient speechClient = SpeechClient.create()) {
 
 			// The path to the audio file to transcribe
-			String fileName = "./resources/audio.raw";
+			String resourceFolder = System.getenv("RESOURCE_FOLDER");
+			System.out.println(resourceFolder);
+			String fileName = resourceFolder + "/audio.raw";
 
 			// Reads the audio file into memory
 			Path path = Paths.get(fileName);
